@@ -59,5 +59,5 @@ public class OrderDetails {
     public String toString(){
         return "orderDetailsNo = " + orderDetailsNo + " , orderID = " + orderID + " , productId = " + productId
                 + " , quantity = " + quantity + " , subtotal = " + subtotal;
-    }¬
+    }
 }
