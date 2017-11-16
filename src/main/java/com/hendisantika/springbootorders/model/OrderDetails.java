@@ -17,47 +17,80 @@ import javax.persistence.*;
 public class OrderDetails {
     @Id
     @Column
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int orderDetailsNo;
-    int orderID;
-    int productId;
+
+    @ManyToOne
+    @JoinColumn(name = "orderID")
+    Orders orders;
+
+    @ManyToOne
+    @JoinColumn(name = "productId")
+    Product product;
+
     int quantity;
+
     double subtotal;
+
+    public Orders getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Orders orders) {
+        this.orders = orders;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 
     public int getOrderDetailsNo() {
         return orderDetailsNo;
     }
+
     public void setOrderDetailsNo(int orderDetailsNo) {
         this.orderDetailsNo = orderDetailsNo;
     }
-    public int getOrderID() {
-        return orderID;
-    }
-    public void setOrderID(int orderID) {
-        this.orderID = orderID;
-    }
-    public int getProductId() {
-        return productId;
-    }
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
+
+
     public int getQuantity() {
         return quantity;
     }
+
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
     public double getSubtotal() {
         return subtotal;
     }
+
     public void setSubtotal(double subtotal) {
         this.subtotal = subtotal;
     }
 
+    public OrderDetails() {
+    }
+
+    public OrderDetails(Orders orders, Product product, int quantity, double subtotal) {
+        this.orders = orders;
+        this.product = product;
+        this.quantity = quantity;
+        this.subtotal = subtotal;
+    }
+
     @Override
-    public String toString(){
-        return "orderDetailsNo = " + orderDetailsNo + " , orderID = " + orderID + " , productId = " + productId
-                + " , quantity = " + quantity + " , subtotal = " + subtotal;
+    public String toString() {
+        return "OrderDetails{" +
+                "orderDetailsNo=" + orderDetailsNo +
+                ", orders=" + orders +
+                ", product=" + product +
+                ", quantity=" + quantity +
+                ", subtotal=" + subtotal +
+                '}';
     }
 }

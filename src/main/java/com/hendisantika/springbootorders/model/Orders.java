@@ -16,13 +16,13 @@ import javax.persistence.*;
 @Entity
 public class Orders {
     @Id
-    @Column(name="orderID")
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column(name = "orderID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int orderID;
 
-    //@OneToOne(mappedBy = "orders")
-    int customerId;
-    //Customer customer;
+    @OneToOne
+    @JoinColumn(name = "customerId")
+    Customer customer;
 
 
     double totalAmount;
@@ -30,6 +30,7 @@ public class Orders {
     public int getOrderID() {
         return orderID;
     }
+
     public void setOrderID(int orderID) {
         this.orderID = orderID;
     }
@@ -37,19 +38,33 @@ public class Orders {
     public double getTotalAmount() {
         return totalAmount;
     }
+
     public void setTotalAmount(double totalAmount) {
         this.totalAmount = totalAmount;
     }
 
-    public int getCustomerId() {
-        return customerId;
-    }
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
-    }
-    @Override
-    public String toString(){
-        return "orderID = " + orderID + " , customerId = " + customerId + " , totalAmount = " + totalAmount;
+    public Customer getCustomer() {
+        return customer;
     }
 
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Orders() {
+    }
+
+    public Orders(Customer customer, double totalAmount) {
+        this.customer = customer;
+        this.totalAmount = totalAmount;
+    }
+
+    @Override
+    public String toString() {
+        return "Orders{" +
+                "orderID=" + orderID +
+                ", customer=" + customer +
+                ", totalAmount=" + totalAmount +
+                '}';
+    }
 }

@@ -26,6 +26,11 @@ public class Product {
 
     double unitPrice;
 
+
+    @ManyToOne
+    @JoinColumn(name = "orderID")
+    OrderDetails orderDetails;
+
     public int getProductId() {
         return productId;
     }
@@ -56,6 +61,16 @@ public class Product {
 
     public void setUnitPrice(double unitPrice) {
         this.unitPrice = unitPrice;
+    }
+
+    public Product() {
+    }
+
+    public Product(String productName, String productDescription, double unitPrice, OrderDetails orderDetails) {
+        this.productName = productName;
+        this.productDescription = productDescription;
+        this.unitPrice = unitPrice;
+        this.orderDetails = orderDetails;
     }
 
     @Override

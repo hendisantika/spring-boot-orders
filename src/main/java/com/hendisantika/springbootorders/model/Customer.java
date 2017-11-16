@@ -27,6 +27,11 @@ public class Customer {
     String cusProvince;
     String cusCountry;
 
+
+    @ManyToOne
+    @JoinColumn(name = "orderID")
+    Orders orders;
+
     public int getCustomerId() {
         return customerId;
     }
@@ -89,6 +94,20 @@ public class Customer {
 
     public void setCusCountry(String cusCountry) {
         this.cusCountry = cusCountry;
+    }
+
+    public Customer() {
+    }
+
+    public Customer(String cusFirstname, String cusLastname, String cusEmail, String cusPhoneNo, String cusCity, String cusProvince, String cusCountry, Orders orders) {
+        this.cusFirstname = cusFirstname;
+        this.cusLastname = cusLastname;
+        this.cusEmail = cusEmail;
+        this.cusPhoneNo = cusPhoneNo;
+        this.cusCity = cusCity;
+        this.cusProvince = cusProvince;
+        this.cusCountry = cusCountry;
+        this.orders = orders;
     }
 
     @Override
