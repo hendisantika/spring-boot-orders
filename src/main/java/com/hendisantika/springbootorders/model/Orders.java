@@ -18,7 +18,7 @@ public class Orders {
     @Id
     @Column(name = "orderID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int orderID;
+    Long orderID;
 
     @OneToOne
     @JoinColumn(name = "customerId")
@@ -27,11 +27,11 @@ public class Orders {
 
     double totalAmount;
 
-    public int getOrderID() {
+    public Long getOrderID() {
         return orderID;
     }
 
-    public void setOrderID(int orderID) {
+    public void setOrderID(Long orderID) {
         this.orderID = orderID;
     }
 

@@ -18,7 +18,7 @@ public class Customer {
     @Id
     @Column(name = "customerId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int customerId;
+    Long customerId;
     String cusFirstname;
     String cusLastname;
     String cusEmail;
@@ -32,12 +32,20 @@ public class Customer {
     @JoinColumn(name = "orderID")
     Orders orders;
 
-    public int getCustomerId() {
+    public Long getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(Long customerId) {
         this.customerId = customerId;
+    }
+
+    public Orders getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Orders orders) {
+        this.orders = orders;
     }
 
     public String getCusFirstname() {

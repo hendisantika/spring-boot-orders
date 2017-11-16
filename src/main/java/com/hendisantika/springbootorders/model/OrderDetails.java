@@ -18,7 +18,7 @@ public class OrderDetails {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int orderDetailsNo;
+    Long orderDetailsNo;
 
     @ManyToOne
     @JoinColumn(name = "orderID")
@@ -48,14 +48,13 @@ public class OrderDetails {
         this.product = product;
     }
 
-    public int getOrderDetailsNo() {
+    public Long getOrderDetailsNo() {
         return orderDetailsNo;
     }
 
-    public void setOrderDetailsNo(int orderDetailsNo) {
+    public void setOrderDetailsNo(Long orderDetailsNo) {
         this.orderDetailsNo = orderDetailsNo;
     }
-
 
     public int getQuantity() {
         return quantity;

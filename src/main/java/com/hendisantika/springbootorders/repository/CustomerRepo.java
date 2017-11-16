@@ -1,5 +1,6 @@
 package com.hendisantika.springbootorders.repository;
 
+import com.hendisantika.springbootorders.model.Customer;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -12,5 +13,5 @@ import org.springframework.data.repository.CrudRepository;
  * Time: 07.12
  * To change this template use File | Settings | File Templates.
  */
-public interface Customer extends CrudRepository {
+public interface CustomerRepo extends CrudRepository<Customer, Long> {
 }
