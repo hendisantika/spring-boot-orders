@@ -27,12 +27,12 @@ public class CustomerController {
     CustomerRepo customerRepo;
 
 
-    @GetMapping("/")
+    @GetMapping
     ResponseEntity<List<Customer>> getCustomers(){
         return new ResponseEntity<List<Customer>>((List<Customer>) customerRepo.findAll(), HttpStatus.OK);
     }
 
-    @PostMapping("/")
+    @PostMapping
     ResponseEntity<Customer> saveCustomer(@RequestBody Customer customer){
         return new ResponseEntity<Customer>(customerRepo.save(customer), HttpStatus.OK);
     }

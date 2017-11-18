@@ -1,6 +1,7 @@
 package com.hendisantika.springbootorders.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by IntelliJ IDEA.
@@ -16,23 +17,21 @@ import javax.persistence.*;
 @Entity
 public class Orders {
     @Id
-    @Column(name = "orderID")
+    @Column(name = "orderId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long orderID;
+    Long orderId;
 
-    @OneToOne
-    @JoinColumn(name = "customerId")
-    Customer customer;
-
+    @ManyToMany(mappedBy = "orders")
+    Set<Customer> customer;
 
     double totalAmount;
 
     public Long getOrderID() {
-        return orderID;
+        return orderId;
     }
 
-    public void setOrderID(Long orderID) {
-        this.orderID = orderID;
+    public void setOrderID(Long orderId) {
+        this.orderId = orderId;
     }
 
     public double getTotalAmount() {
@@ -43,26 +42,22 @@ public class Orders {
         this.totalAmount = totalAmount;
     }
 
-    public Customer getCustomer() {
+    public Set<Customer> getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(Set<Customer> customer) {
         this.customer = customer;
     }
 
     public Orders() {
     }
 
-    public Orders(Customer customer, double totalAmount) {
-        this.customer = customer;
-        this.totalAmount = totalAmount;
-    }
 
     @Override
     public String toString() {
         return "Orders{" +
-                "orderID=" + orderID +
+                "orderId=" + orderId +
                 ", customer=" + customer +
                 ", totalAmount=" + totalAmount +
                 '}';

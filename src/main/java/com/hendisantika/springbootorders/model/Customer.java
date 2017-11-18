@@ -1,6 +1,8 @@
 package com.hendisantika.springbootorders.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by IntelliJ IDEA.
@@ -28,9 +30,10 @@ public class Customer {
     String cusCountry;
 
 
-    @ManyToOne
-    @JoinColumn(name = "orderID")
-    Orders orders;
+    @ManyToMany(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "orderId")
+    @JoinTable(name = "customer_order", joinColumns = {@JoinColumn(name = "customerId")}, inverseJoinColumns = {@JoinColumn(name = "orderId")})
+    Set<Orders> orders = new HashSet<Orders>(0);
 
     public Long getCustomerId() {
         return customerId;
@@ -40,11 +43,11 @@ public class Customer {
         this.customerId = customerId;
     }
 
-    public Orders getOrders() {
+    public Set<Orders> getOrders() {
         return orders;
     }
 
-    public void setOrders(Orders orders) {
+    public void setOrders(Set<Orders> orders) {
         this.orders = orders;
     }
 
@@ -107,7 +110,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String cusFirstname, String cusLastname, String cusEmail, String cusPhoneNo, String cusCity, String cusProvince, String cusCountry, Orders orders) {
+    public Customer(String cusFirstname, String cusLastname, String cusEmail, String cusPhoneNo, String cusCity, String cusProvince, String cusCountry, Set<Orders> orders) {
         this.cusFirstname = cusFirstname;
         this.cusLastname = cusLastname;
         this.cusEmail = cusEmail;
