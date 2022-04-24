@@ -31,30 +31,35 @@ public class CustomerWebController {
     public String listCustomer(Model model) {
         Iterable<Customer> customers = customerRepo.findAll();
         model.addAttribute("customers", customers);
+        log.info("List All customers");
         return "customer/customer_list";
     }
 
     @GetMapping("/create")
     public String showCustomerForm(Model model) {
         model.addAttribute("customer", new Customer());
+        log.info("Show add new customer form");
         return "customer/customer_add";
     }
 
     @PostMapping("/create")
     public String addCustomer(Model model, Customer customer) {
         model.addAttribute("customer", customerRepo.save(customer));
+        log.info("Add new customer");
         return "redirect:/customers/list";
     }
 
     @GetMapping(value = "/edit/{id}")
     public String editFormCustomer(@PathVariable Long id, Model model) {
         model.addAttribute("customer", customerRepo.findById(id));
+        log.info("Show customer details");
         return "customer/customer_add";
     }
 
     @GetMapping(value = "/hapus/{id}")
     public String hapusCustomer(@PathVariable Long id) {
         customerRepo.deleteById(id);
+        log.info("Delete customer by ID");
         return "redirect:/customers/list";
     }
 }
