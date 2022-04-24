@@ -33,4 +33,10 @@ public class ProductWebController {
         model.addAttribute("products", products);
         return "product/product_list";
     }
+
+    @GetMapping("create")
+    public String showProductForm(Model model) {
+        model.addAttribute("product", new Product());
+        return "product/product_add";
+    }
 }
