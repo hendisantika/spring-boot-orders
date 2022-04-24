@@ -41,8 +41,9 @@
             <td scope="col" th:text="${c.cusProvince}"></td>
             <td scope="col" th:text="${c.cusCountry}"></td>
             <td scope="col">
-                <a class="btn btn-primary" role="button" th:href="${'/edit/'+c.customerId}"><span>Edit</span></a>
-                <a class="btn btn-danger" role="button" th:href="${'/hapus/'+c.customerId}"><span>Remove</span></a>
+                <a class="btn btn-primary" role="button" th:href="${'/customers/edit/'+c.customerId}"><span>Edit</span></a>
+                <a class="btn btn-danger" role="button"
+                   th:href="${'/customers/hapus/'+c.customerId}"><span>Remove</span></a>
             </td>
         </tr>
         </tbody>

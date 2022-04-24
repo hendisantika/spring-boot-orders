@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -44,4 +45,11 @@ public class CustomerWebController {
         model.addAttribute("customer", customerRepo.save(customer));
         return "redirect:/customers/list";
     }
+
+    @GetMapping(value = "/edit/{id}")
+    public String editFormCustomer(@PathVariable Long id, Model model) {
+        model.addAttribute("customer", customerRepo.findById(id));
+        return "customer/customer_add";
+    }
+
 }
