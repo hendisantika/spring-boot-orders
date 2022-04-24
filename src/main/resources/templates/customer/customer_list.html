@@ -1,0 +1,53 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Customer List</title>
+
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          name="viewport">
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="icon" th:href="@{/img/ubuntu.png}">
+
+    <script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/jquery-3.3.1.slim.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/popper.min.js}" type="text/javascript"></script>
+</head>
+<body>
+<div class="container"><h2>CUSTOMER DATA</h2></div>
+<div class="container"><a class="btn btn-info" role="button" th:href="@{/customers/create}">New</a></div>
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Name Depan</th>
+            <th scope="col">Name Belakang</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Kota</th>
+            <th scope="col">Provinsi</th>
+            <th scope="col">Negara</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="c : ${customers}">
+            <td scope="col" th:text="${c.cusFirstname}"></td>
+            <td scope="col" th:text="${c.cusLastname}"></td>
+            <td scope="col" th:text="${c.cusEmail}"></td>
+            <td scope="col" th:text="${c.cusPhoneNo}"></td>
+            <td scope="col" th:text="${c.cusCity}"></td>
+            <td scope="col" th:text="${c.cusProvince}"></td>
+            <td scope="col" th:text="${c.cusCountry}"></td>
+            <td scope="col">
+                <a class="btn btn-primary" role="button" th:href="${'/edit/'+c.customerId}"><span>Edit</span></a>
+                <a class="btn btn-danger" role="button" th:href="${'/hapus/'+c.customerId}"><span>Remove</span></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
