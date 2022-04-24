@@ -1,9 +1,12 @@
 package com.hendisantika.springbootorders.controller;
 
+import com.hendisantika.springbootorders.model.Customer;
 import com.hendisantika.springbootorders.repository.CustomerRepo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -21,4 +24,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Slf4j
 public class CustomerWebController {
     private final CustomerRepo customerRepo;
+
+    @GetMapping("/list")
+    public String listCustomer(Model model) {
+        Iterable<Customer> customers = customerRepo.findAll();
+        model.addAttribute("customers", customers);
+        return "customer/customer_list";
+    }
 }
