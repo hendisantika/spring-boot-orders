@@ -1,0 +1,48 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Product List</title>
+
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          name="viewport">
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="icon" th:href="@{/img/ubuntu.png}">
+
+    <script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/jquery-3.3.1.slim.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/popper.min.js}" type="text/javascript"></script>
+</head>
+<body>
+<div class="container"><h2>PRODUCT DATA</h2></div>
+<div class="container"><a class="btn btn-info" role="button" th:href="@{/products/create}">New</a></div>
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Name Product</th>
+            <th scope="col">Deskripsi Product</th>
+            <th scope="col">Harga</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="p : ${products}">
+            <td scope="col" th:text="${p.productName}"></td>
+            <td scope="col" th:text="${p.productDescription}"></td>
+            <td scope="col" th:text="${p.productDescription}"></td>
+            <td scope="col" th:text="${p.unitPrice}"></td>
+            <td scope="col">
+                <a class="btn btn-primary" role="button"
+                   th:href="${'/products/edit/'+p.productId}"><span>Edit</span></a>
+                <a class="btn btn-danger" role="button"
+                   th:href="${'/products/hapus/'+p.productId}"><span>Remove</span></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
