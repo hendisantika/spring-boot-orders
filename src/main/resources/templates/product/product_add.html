@@ -1,0 +1,64 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Add Product</title>
+
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          name="viewport">
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="icon" th:href="@{/img/ubuntu.png}">
+
+    <script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/jquery-3.3.1.slim.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/popper.min.js}" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Form Add Product</h2>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <form class="form-horizontal" method="post"
+                  th:action="@{/products/create}" th:object="${product}">
+                <input th:field="*{productId}" type="hidden"/>
+
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Nama Produk:</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" id="productName" placeholder="Nama Produk" required
+                               th:field="*{productName}" type="text">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Deskripsi Produk:</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" id="productDescription" placeholder="Deskripsi Produk" required
+                               th:field="*{productDescription}" type="text">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Unit Price:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="text" placeholder="Unit Price" required
+                               th:field="*{unitPrice}" type="text">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" value="Save">
+                    <a class="btn btn-danger" role="button" th:href="@{/products/list}">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
