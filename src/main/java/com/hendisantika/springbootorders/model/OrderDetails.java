@@ -1,6 +1,12 @@
 package com.hendisantika.springbootorders.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  * Created by IntelliJ IDEA.
@@ -21,11 +27,11 @@ public class OrderDetails {
     Long orderDetailsNo;
 
     @ManyToOne
-    @JoinColumn(name = "orderID")
+    @JoinColumn(name = "order_id")
     Orders orders;
 
     @ManyToOne
-    @JoinColumn(name = "productId")
+    @JoinColumn(name = "product_id")
     Product product;
 
     int quantity;

@@ -1,6 +1,16 @@
 package com.hendisantika.springbootorders.model;
 
-import javax.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  * Created by IntelliJ IDEA.
@@ -14,6 +24,9 @@ import javax.persistence.*;
  */
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Product {
     @Id
     @Column(name = "productId")
@@ -26,53 +39,10 @@ public class Product {
 
     double unitPrice;
 
-
     @ManyToOne
     @JoinColumn(name = "orderID")
     OrderDetails orderDetails;
 
-    public Long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
-    }
-
-    public OrderDetails getOrderDetails() {
-        return orderDetails;
-    }
-
-    public void setOrderDetails(OrderDetails orderDetails) {
-        this.orderDetails = orderDetails;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public String getProductDescription() {
-        return productDescription;
-    }
-
-    public void setProductDescription(String productDescription) {
-        this.productDescription = productDescription;
-    }
-
-    public double getUnitPrice() {
-        return unitPrice;
-    }
-
-    public void setUnitPrice(double unitPrice) {
-        this.unitPrice = unitPrice;
-    }
-
-    public Product() {
-    }
 
     public Product(String productName, String productDescription, double unitPrice, OrderDetails orderDetails) {
         this.productName = productName;
@@ -81,9 +51,4 @@ public class Product {
         this.orderDetails = orderDetails;
     }
 
-    @Override
-    public String toString() {
-        return "productId = " + productId + ", productName = " + productName + ", productDescription = " +
-                productDescription + ", unitPrice = " + unitPrice;
-    }
 }

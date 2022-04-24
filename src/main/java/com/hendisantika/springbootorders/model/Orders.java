@@ -1,6 +1,15 @@
 package com.hendisantika.springbootorders.model;
 
-import javax.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import java.util.Set;
 
 /**
@@ -15,6 +24,9 @@ import java.util.Set;
  */
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Orders {
     @Id
     @Column(name = "orderId")
@@ -25,41 +37,4 @@ public class Orders {
     Set<Customer> customer;
 
     double totalAmount;
-
-    public Long getOrderID() {
-        return orderId;
-    }
-
-    public void setOrderID(Long orderId) {
-        this.orderId = orderId;
-    }
-
-    public double getTotalAmount() {
-        return totalAmount;
-    }
-
-    public void setTotalAmount(double totalAmount) {
-        this.totalAmount = totalAmount;
-    }
-
-    public Set<Customer> getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Set<Customer> customer) {
-        this.customer = customer;
-    }
-
-    public Orders() {
-    }
-
-
-    @Override
-    public String toString() {
-        return "Orders{" +
-                "orderId=" + orderId +
-                ", customer=" + customer +
-                ", totalAmount=" + totalAmount +
-                '}';
-    }
 }
