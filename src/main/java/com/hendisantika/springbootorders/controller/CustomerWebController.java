@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -36,5 +37,11 @@ public class CustomerWebController {
     public String showCustomerForm(Model model) {
         model.addAttribute("customer", new Customer());
         return "customer/customer_add";
+    }
+
+    @PostMapping("/create")
+    public String addCustomer(Model model, Customer customer) {
+        model.addAttribute("customer", customerRepo.save(customer));
+        return "redirect:/customers/list";
     }
 }
