@@ -31,4 +31,10 @@ public class CustomerWebController {
         model.addAttribute("customers", customers);
         return "customer/customer_list";
     }
+
+    @GetMapping("/create")
+    public String showCustomerForm(Model model) {
+        model.addAttribute("customer", new Customer());
+        return "customer/customer_add";
+    }
 }
