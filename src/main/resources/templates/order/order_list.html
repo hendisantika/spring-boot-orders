@@ -16,27 +16,31 @@
 </head>
 <body>
 <div class="container"><h2>PRODUCT DATA</h2></div>
-<div class="container"><a class="btn btn-info" role="button" th:href="@{/products/create}">New</a></div>
+<div class="container"><a class="btn btn-info" role="button" th:href="@{/orders/create}">New</a></div>
 <div class="container">
     <table class="table">
         <thead class="thead-dark">
         <tr>
-            <th scope="col">Name Product</th>
-            <th scope="col">Deskripsi Product</th>
-            <th scope="col">Harga</th>
+            <th scope="col">Order Details Number</th>
+            <th scope="col">Order ID</th>
+            <th scope="col">Product ID</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Sub Total</th>
             <th scope="col">Action</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="p : ${products}">
-            <td scope="col" th:text="${p.productName}"></td>
-            <td scope="col" th:text="${p.productDescription}"></td>
-            <td scope="col" th:text="${p.unitPrice}"></td>
+        <tr th:each="o : ${orders}">
+            <td scope="col" th:text="${o.orderDetailsNo}"></td>
+            <td scope="col" th:text="${o.orderId}"></td>
+            <td scope="col" th:text="${o.productId}"></td>
+            <td scope="col" th:text="${o.quantity}"></td>
+            <td scope="col" th:text="${o.subtotal}"></td>
             <td scope="col">
                 <a class="btn btn-primary" role="button"
-                   th:href="${'/products/edit/'+p.productId}"><span>Edit</span></a>
+                   th:href="${'/orders/edit/'+o.orderId}"><span>Edit</span></a>
                 <a class="btn btn-danger" role="button"
-                   th:href="${'/products/hapus/'+p.productId}"><span>Remove</span></a>
+                   th:href="${'/orders/hapus/'+o.orderId}"><span>Remove</span></a>
             </td>
         </tr>
         </tbody>
