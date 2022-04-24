@@ -52,4 +52,9 @@ public class CustomerWebController {
         return "customer/customer_add";
     }
 
+    @GetMapping(value = "/hapus/{id}")
+    public String hapusCustomer(@PathVariable Long id) {
+        customerRepo.deleteById(id);
+        return "redirect:/customers/list";
+    }
 }
