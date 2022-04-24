@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -38,5 +39,11 @@ public class ProductWebController {
     public String showProductForm(Model model) {
         model.addAttribute("product", new Product());
         return "product/product_add";
+    }
+
+    @PostMapping("create")
+    public String addProduct(Model model, Product product) {
+        model.addAttribute("product", productRepository.save(product));
+        return "redirect:/products/list";
     }
 }
