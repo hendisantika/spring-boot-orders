@@ -1,0 +1,96 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Add Customer</title>
+
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          name="viewport">
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="icon" th:href="@{/img/ubuntu.png}">
+
+    <script th:src="@{/js/bootstrap.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/jquery-3.3.1.slim.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/popper.min.js}" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Form Add Customer</h2>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <form class="form-horizontal" method="post"
+                  th:action="@{/customers/create}" th:object="${customer}">
+                <input th:field="*{customerId}" type="hidden"/>
+
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Nama Depan:</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" id="firstName" placeholder="Nama Depan" required
+                               th:field="*{cusFirstname}" type="text">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Nama Belakang:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="lastName" placeholder="Nama Belakang" required
+                               th:field="*{cusLastname}" type="text">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Email:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="email" placeholder="Email" required
+                               th:field="*{cusEmail}" type="text">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Phone:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="phone" placeholder="Nomor telepon" required
+                               th:field="*{cusPhoneNo}" type="text">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Kota:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="city" placeholder="Kota" required th:field="*{cusCity}"
+                               type="text">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Provinsi:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="province" placeholder="Provinsi" required
+                               th:field="*{cusProvince}" type="text">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Negara:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="country" placeholder="Negara" required th:field="*{cusCountry}"
+                               type="text">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input class="btn btn-success" type="submit" value="Save">
+                    <a class="btn btn-danger" role="button" th:href="@{/}">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
