@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Add Product</title>
+    <title>Add Order</title>
 
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -17,43 +17,43 @@
 <body>
 
 <div class="container">
-    <h2>Form Add Product</h2>
+    <h2>Form Add Order</h2>
 </div>
 
 <div class="container">
     <div class="row">
         <div class="col-sm-8">
             <form class="form-horizontal" method="post"
-                  th:action="@{/products/create}" th:object="${product}">
-                <input th:field="*{productId}" type="hidden"/>
-
+                  th:action="@{/orders/create}" th:object="${order}">
+                <input th:field="*{orderId}" type="hidden"/>
                 <div class="form-group">
-                    <label class="col-sm-4 control-label">Nama Produk:</label>
+                    <label class="col-sm-4 control-label">Select Customer:</label>
                     <div class="col-sm-8">
-                        <input class="form-control" id="productName" placeholder="Nama Produk" required
-                               th:field="*{productName}" type="text">
+                        <select name="customer.customerId">
+                            <option th:each="c : ${customers}"
+                                    th:text="${c.cusFirstname}"
+                                    th:value="${c.customerId}">Customer First Name
+                            </option>
+                        </select>
                     </div>
                 </div>
-
                 <div class="form-group">
-                    <label class="col-sm-4 control-label">Deskripsi Produk:</label>
+                    <label class="col-sm-4 control-label">Select Produk:</label>
                     <div class="col-sm-8">
-                        <input class="form-control" id="productDescription" placeholder="Deskripsi Produk" required
-                               th:field="*{productDescription}" type="text">
+                        <select name="orderDetails[0].product.productId">
+                            <option th:each="p : ${products}"
+                                    th:text="${p.productName}"
+                                    th:value="${p.productId}">Product Name
+                            </option>
+                        </select>
+                        <input name="orderDetails[0].quantity" type="text"/>
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Unit Price:</label>
-                    <div class="col-sm-10">
-                        <input class="form-control" id="text" placeholder="Unit Price" required
-                               th:field="*{unitPrice}" type="text">
-                    </div>
-                </div>
 
                 <div class="form-group">
                     <input class="btn btn-success" type="submit" value="Save">
-                    <a class="btn btn-danger" role="button" th:href="@{/products/list}">Back</a>
+                    <a class="btn btn-danger" role="button" th:href="@{/orders/list}">Back</a>
                 </div>
             </form>
         </div>
