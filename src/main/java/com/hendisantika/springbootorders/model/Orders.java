@@ -4,13 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import java.util.Set;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -29,12 +24,16 @@ import java.util.Set;
 @NoArgsConstructor
 public class Orders {
     @Id
-    @Column(name = "orderId")
+    @Column(name = "order_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long orderId;
+    private Long orderId;
 
-    @ManyToMany(mappedBy = "orders")
-    Set<Customer> customer;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
-    double totalAmount;
+    @OneToMany
+    private List<OrderDetails> orderDetails;
+
+    private double totalAmount;
 }
